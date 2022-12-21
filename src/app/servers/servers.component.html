@@ -1,8 +1,10 @@
 <div class="row">
   <div class="col-xs-12 col-sm-4">
+    <!-- <a [routerLink]="['/servers',1,'edit']"> navigate</a> -->
     <div class="list-group">
       <a
-        href="#"
+       [routerLink]="['/servers',server.id]"
+     
         class="list-group-item"
         *ngFor="let server of servers">
         {{ server.name }}
@@ -10,9 +12,10 @@
     </div>
   </div>
   <div class="col-xs-12 col-sm-4">
-    <app-edit-server></app-edit-server>
+    <router-outlet></router-outlet>
+    <!-- <app-edit-server></app-edit-server> -->
     <hr>
-    <app-server></app-server>
+    <!-- <app-server></app-server> -->
   </div>
 </div>
 

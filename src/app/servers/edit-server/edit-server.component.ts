@@ -5,14 +5,15 @@ import { ServersService } from '../servers.service';
 @Component({
   selector: 'app-edit-server',
   templateUrl: './edit-server.component.html',
-  styleUrls: ['./edit-server.component.css']
+  styleUrls: ['./edit-server.component.css'],
 })
 export class EditServerComponent implements OnInit {
-  server: {id: number, name: string, status: string};
+  server: { id: number; name: string; status: string };
   serverName = '';
   serverStatus = '';
+  hasSaved: boolean = false;
 
-  constructor(private serversService: ServersService) { }
+  constructor(private serversService: ServersService) {}
 
   ngOnInit() {
     this.server = this.serversService.getServer(1);
@@ -21,7 +22,10 @@ export class EditServerComponent implements OnInit {
   }
 
   onUpdateServer() {
-    this.serversService.updateServer(this.server.id, {name: this.serverName, status: this.serverStatus});
+    this.serversService.updateServer(this.server.id, {
+      name: this.serverName,
+      status: this.serverStatus,
+    });
+    this.hasSaved = true;
   }
-
 }
